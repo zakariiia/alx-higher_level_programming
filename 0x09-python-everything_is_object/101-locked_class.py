@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-""" LockedClass
+"""
+This is a module that containts a clas that avoids
+dynmaically created attributes
 """
 
 
-class LockedClass:
-    __slots__= ['first_name']
+class LockedClass():
+    """ locked class """
+    __slots__ = ['first_name']
