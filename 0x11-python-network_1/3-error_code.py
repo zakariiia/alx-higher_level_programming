@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-'''
-takes in a URL, sends a request to the URL
-and displays the body of the response.
-'''
+"""
+Python script that takes in a URL,
+sends a request to the URL and displays the body
+of the response (decoded in utf-8).
+"""
+import sys
+from urllib import request, error
 
 
 if __name__ == "__main__":
-    import sys
-    import urllib.parse
-    import urllib.request
-
-    url = sys.argv[1]
     try:
-        request = urllib.request.Request(url)
-        with urllib.request.urlopen(url) as res:
-            print(res.read().decode('UTF-8'))
-    except urllib.error.HTTPError as er:
-        print('Error code:', er.code)
+        with request.urlopen(sys.argv[1]) as r:
+            print(r.read().decode('UTF-8'))
+    except error.HTTPError as e:
+        print('Error code:', e.code)
